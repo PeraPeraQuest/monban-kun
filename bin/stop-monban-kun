@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# stop-monban-kun
+
+kill -9 "$(< monban-kun.pid)"

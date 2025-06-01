@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# run-docker
+
+# run the Monban-kun service in a container
+docker run \
+    --env=BIND_ADDRESS_AND_PORT="0.0.0.0:3000" \
+    --env=DISCORD_CLIENT_ID="1376...........3156" \
+    --env=DISCORD_CLIENT_SECRET="your.client.secret.here" \
+    --env=DISCORD_GUILD_ID="1370...........0322" \
+    --env=DISCORD_REDIRECT_URI="http://localhost:3000/auth/discord" \
+    --env=DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1377...........4318/your.secret.webhook.url.here" \
+    --env=RUST_LOG="debug" \
+    --name=monban-kun \
+    --publish 3000:3000 \
+    --rm \
+    monban-kun:latest

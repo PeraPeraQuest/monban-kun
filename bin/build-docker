@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# build-docker
+
+# create a unique(-ish) build tag for this build
+BUILD_TAG="$(date +%Y%m%d%H%M%S)"
+
+# build Monban-kun, and tag it as monban-kun:BUILD_TAG
+docker buildx build $@ \
+    --file Dockerfile \
+    --tag monban-kun:${BUILD_TAG} \
+    .
+
+# since we just built Monban-kun, tag it again as monban-kun:latest
+docker image tag monban-kun:${BUILD_TAG} monban-kun:latest

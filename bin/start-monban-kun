@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# start-monban-kun
+
+export BIND_ADDRESS_AND_PORT="0.0.0.0:3000"
+export DISCORD_CLIENT_ID="1376...........3156"
+export DISCORD_CLIENT_SECRET="your.client.secret.here"
+export DISCORD_GUILD_ID="1370...........0322"
+export DISCORD_REDIRECT_URI="http://localhost:3000/auth/discord"
+export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1377...........4318/your.secret.webhook.url.here"
+export RUST_LOG="debug"
+
+TIMESTAMP=$(date +%s)
+
+cargo build --release
+cargo run --release 1>monban-kun-${TIMESTAMP}.log.1 2>monban-kun-${TIMESTAMP}.log.2 &
+echo $! >monban-kun.pid
